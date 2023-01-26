@@ -6,11 +6,11 @@ $(document).ready(function () {
   let currentHour = moment().format("HH");
 
   // show live updating time
-function displayTime() {
-  let time = moment().format("MMMM Do YYYY, h:mm:ss a");
-  $("#currentDay").html(time);
-}
-setInterval(displayTime, 1000);
+  function displayTime() {
+    let time = moment().format("MMMM Do YYYY, h:mm:ss a");
+    $("#currentDay").html(time);
+  }
+  setInterval(displayTime, 1000);
 
   // Function to clear content and local storage
   $("#clearFieldsBtn").click(function (event) {
@@ -19,27 +19,23 @@ setInterval(displayTime, 1000);
     localStorage.clear();
   });
 
-
   // Alert message for when clearFieldsBtn is clicked
   $("#clearFieldsBtn").click(function (event) {
     event.preventDefault;
     alert("Workday Cleared!");
   });
 
-
-    // sound when clearFieldsBtn alert box clicked. sfx sourced from https://pixabay.com/sound-effects/
-    $("#clearFieldsBtn").click(function (event) {
-      event.preventDefault;
-      let audio = new Audio("assets/sfx/cleared.mp3");
-      audio.play();
-    });
-
-
+  // sound when clearFieldsBtn alert box clicked. sfx sourced from https://pixabay.com/sound-effects/
+  $("#clearFieldsBtn").click(function (event) {
+    event.preventDefault;
+    let audio = new Audio("assets/sfx/cleared.mp3");
+    audio.play();
+  });
 
   //check the hour from each time slot and compares it to the actual current time
   $(".timeDiv").each(function () {
     let timeDiv = $(this).attr("id").split("-")[1];
-    
+
     if (currentHour == timeDiv) {
       $(this).addClass("present");
     } else if (currentHour < timeDiv) {
@@ -59,7 +55,7 @@ setInterval(displayTime, 1000);
     localStorage.setItem(time, value);
   });
 
-// Alert message for when saveBtn is clicked
+  // Alert message for when saveBtn is clicked
   $(".saveBtn").click(function (event) {
     event.preventDefault();
     alert("Timeblock Saved!");
@@ -72,7 +68,6 @@ setInterval(displayTime, 1000);
     audio.play();
   });
 
-
   //retrieves items from local storage
   $("#hour-09 .timeblock").val(localStorage.getItem("09"));
   $("#hour-10 .timeblock").val(localStorage.getItem("10"));
@@ -84,5 +79,3 @@ setInterval(displayTime, 1000);
   $("#hour-16 .timeblock").val(localStorage.getItem("16"));
   $("#hour-17 .timeblock").val(localStorage.getItem("17"));
 });
-
-
