@@ -18,11 +18,10 @@ $(document).ready(function () {
     $("textarea").val("");
     localStorage.clear();
   });
-
-  // Alert message for when clearFieldsBtn is clicked
+  // dialog box to confirm workday cleared
   $("#clearFieldsBtn").click(function (event) {
-    event.preventDefault;
-    alert("Workday Cleared!");
+    $("#clearForm").dialog();
+    $("#clearForm").text("You can now close this message");
   });
 
   // sound when clearFieldsBtn alert box clicked. sfx sourced from https://pixabay.com/sound-effects/
@@ -55,10 +54,10 @@ $(document).ready(function () {
     localStorage.setItem(time, value);
   });
 
-  // Alert message for when saveBtn is clicked
+  // dialog box to alert user timeblock has been saved
   $(".saveBtn").click(function (event) {
-    event.preventDefault();
-    alert("Timeblock Saved!");
+    $("#saveItem").dialog();
+    $("#saveItem").text("You can now close this message!");
   });
 
   // sound when saveBtn alert box is clicked. sfx sourced from https://pixabay.com/sound-effects/
