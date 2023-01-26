@@ -13,7 +13,7 @@ function displayTime() {
 setInterval(displayTime, 1000);
 
   // Function to clear content and local storage
-  $(".clearFieldsBtn").click(function (event) {
+  $("#clearFieldsBtn").click(function (event) {
     event.preventDefault;
     $("textarea").val("");
     localStorage.clear();
@@ -27,7 +27,7 @@ setInterval(displayTime, 1000);
   });
 
 
-    // sound when clearFieldsBtn alert box clicked
+    // sound when clearFieldsBtn alert box clicked. sfx sourced from https://pixabay.com/sound-effects/
     $("#clearFieldsBtn").click(function (event) {
       event.preventDefault;
       let audio = new Audio("assets/sfx/cleared.mp3");
@@ -65,7 +65,7 @@ setInterval(displayTime, 1000);
     alert("Timeblock Saved!");
   });
 
-  // sound when saveBtn alert box is clicked
+  // sound when saveBtn alert box is clicked. sfx sourced from https://pixabay.com/sound-effects/
   $(".saveBtn").click(function (event) {
     event.preventDefault();
     let audio = new Audio("assets/sfx/saved.mp3");
