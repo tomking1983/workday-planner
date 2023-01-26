@@ -7,17 +7,18 @@ $(document).ready(function () {
 
   // show live updating time
 function displayTime() {
-  var time = moment().format("MMMM Do YYYY, h:mm:ss a");
+  let time = moment().format("MMMM Do YYYY, h:mm:ss a");
   $("#currentDay").html(time);
 }
 setInterval(displayTime, 1000);
 
   // Function to clear content and local storage
-  $("#clearFieldsBtn").click(function (event) {
+  $(".clearFieldsBtn").click(function (event) {
     event.preventDefault;
     $("textarea").val("");
     localStorage.clear();
   });
+
 
   // Alert message for when clearFieldsBtn is clicked
   $("#clearFieldsBtn").click(function (event) {
@@ -25,9 +26,19 @@ setInterval(displayTime, 1000);
     alert("Workday Cleared!");
   });
 
+
+    // sound when clearFieldsBtn alert box clicked
+    $("#clearFieldsBtn").click(function (event) {
+      event.preventDefault;
+      let audio = new Audio("assets/sfx/cleared.mp3");
+      audio.play();
+    });
+
+
+
   //check the hour from each time slot and compares it to the actual current time
   $(".timeDiv").each(function () {
-    var timeDiv = $(this).attr("id").split("-")[1];
+    let timeDiv = $(this).attr("id").split("-")[1];
     
     if (currentHour == timeDiv) {
       $(this).addClass("present");
@@ -43,8 +54,8 @@ setInterval(displayTime, 1000);
   //grabs values from time and value divs and saves them to local storage
   $(".saveBtn").click(function (event) {
     event.preventDefault();
-    var value = $(this).siblings(".timeblock").val();
-    var time = $(this).parent().attr("id").split("-")[1];
+    let value = $(this).siblings(".timeblock").val();
+    let time = $(this).parent().attr("id").split("-")[1];
     localStorage.setItem(time, value);
   });
 
@@ -53,6 +64,14 @@ setInterval(displayTime, 1000);
     event.preventDefault();
     alert("Timeblock Saved!");
   });
+
+  // sound when saveBtn alert box is clicked
+  $(".saveBtn").click(function (event) {
+    event.preventDefault();
+    let audio = new Audio("assets/sfx/saved.mp3");
+    audio.play();
+  });
+
 
   //retrieves items from local storage
   $("#hour-09 .timeblock").val(localStorage.getItem("09"));
