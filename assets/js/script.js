@@ -1,9 +1,16 @@
 $(document).ready(function () {
   //Moment.js code
-  let NowMoment = moment().format("MMMM Do YYYY");
+  let NowMoment = moment().format("MMMM Do YYYY, h:mm:ss a");
   let displayDate = document.getElementById("currentDay");
   displayDate.innerHTML = NowMoment;
   let currentHour = moment().format("HH");
+
+  // show live updating time
+function displayTime() {
+  var time = moment().format("MMMM Do YYYY, h:mm:ss a");
+  $("#currentDay").html(time);
+}
+setInterval(displayTime, 1000);
 
   // Function to clear content and local storage
   $("#clearFieldsBtn").click(function (event) {
@@ -58,3 +65,5 @@ $(document).ready(function () {
   $("#hour-16 .timeblock").val(localStorage.getItem("16"));
   $("#hour-17 .timeblock").val(localStorage.getItem("17"));
 });
+
+
